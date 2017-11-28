@@ -13,6 +13,24 @@
     console.log("still working");
       },1000*3);
 
+//function for a timer
+function timer() {
+      let timeLeft = 2;
+
+      let timerId = setInterval(countdown, 1000);
+
+      function countdown() {
+        if (timeLeft < 0) {
+          clearTimeout(timerId);
+            alert("Out of Time");
+            return;
+        } else {
+          $("#timer").text(timeLeft);
+          timeLeft--;
+        }
+      }
+}
+
 // clearTimeout();
 
 
@@ -46,35 +64,38 @@ let q3 = {
   let wrong   = 0;
 
  //add question objects to draw from
-
+ results = () => {
+   //question value === user picked value
+ }
 
 // create classes
 
 
   maker = (x,y) => {
     for ( let i = 0; i < y.length; i++) {
-      let question = $("<h3>");
-      question.text(y[i]);
-      question.addClass('click');
-      question.attr("value",i);
+      let choice = $("<h3>");
+      choice.text(y[i]);
+      choice.addClass('click');
+      choice.attr("value",i);
+
+
+      $("#choices").append(choice);
+    }
       $(".click").on('click',function() {
         //Adding a click for response functionality
-        console.log([i]);
-        console.log("value");
-        console.log(this.attr);
-        console.log(this.class);
-      })
-      $("#choices").append(question);
-    }
+
+        console.log("You clicked an answer");
+
+    });
     $("#question").text(x+"");
+    $("#question").attr('value',Math.floor(Math.random()*4));
     //timer function
-  }
+}
 
  /*constructor(q1.q1,q1.q1choices);
 id="page"
 
  */
-
 
 
 /*
@@ -84,15 +105,18 @@ alert(example.constructor(q1.q1,q1.q1choices));
 console.log(q1.q1);
 
 //created a couple of onclicks for working functinality
-$("#page").on('click',function() {
+$("#timer").on('click',function() {
+
   $("#choices").empty();
   maker(q1.q1,q1.q1choices);
+  timer();
+
 });
 
-$("#test").on('click', function(){
+$("#test").on('click', function() {
   $("#choices").empty();
   maker(q2.q2,q2.q2choices);
-})
+});
 
 
 
