@@ -7,8 +7,8 @@ body {
   background-color: teal;
 }
 
-.class {
-  background-color: lightgrey;
+.container {
+  margin: 40px; padding: 25px; text-align: center;
 }
 
 h1 {
