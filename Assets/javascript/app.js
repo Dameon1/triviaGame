@@ -34,6 +34,14 @@
     q1: "Who wrote?",
     q1choices: ["a","b","c","d"],
 };
+let q2 = {
+  q2: "Who sang?",
+  q2choices: ["a","b","c","d"],
+};
+let q3 = {
+  q3: "Who produced?",
+  q3choices: ["a","b","c","d"],
+};
   let correct = 0;
   let wrong   = 0;
 
@@ -43,32 +51,58 @@
 // create classes
 
 
-  constructor = (x,y) => {
+  maker = (x,y) => {
     for ( let i = 0; i < y.length; i++) {
       let question = $("<h3>");
       question.text(y[i]);
-
-
+      question.addClass('click');
+      question.attr("value",i);
+      $(".click").on('click',function() {
+        //Adding a click for response functionality
+        console.log([i]);
+        console.log("value");
+        console.log(this.attr);
+        console.log(this.class);
+      })
       $("#choices").append(question);
     }
     $("#question").text(x+"");
+    //timer function
   }
 
-constructor(q1.q1,q1.q1choices);
+ /*constructor(q1.q1,q1.q1choices);
+id="page"
+
+ */
 
 
 
-
-
-
+/*
+alert(example.constructor(q1.q1,q1.q1choices));
+*/
 // Ask question q1.q1 with console.log of nextQuestion
 console.log(q1.q1);
+
+//created a couple of onclicks for working functinality
+$("#page").on('click',function() {
+  $("#choices").empty();
+  maker(q1.q1,q1.q1choices);
+});
+
+$("#test").on('click', function(){
+  $("#choices").empty();
+  maker(q2.q2,q2.q2choices);
+})
+
+
+
+
 
 //Create a for-loop to iterate through the q1.q1choices array
 
 
 //onClick functionality
-$
+
 //determine resultsDisplay
 
 //reset timer and ask nextQuestion
@@ -93,24 +127,3 @@ timerReset = () => {
 
 
 });
-/*  for (let i = 0; i < letters.length;i++) {
-      let newDiv = $("<h3>");
-      letterBtn.addClass("letter-button letter-button-color letter");
-      letterBtn.attr("data-letter",letters[i]);
-      letterBtn.text(letters[i]);
-      $("#buttons").append(letterBtn);
-
-
-      }
-
-
-    $(".letter-button").on('click', function(event){
-      let fridgeMagnet = $("<div>");
-      fridgeMagnet.addClass("letter fridge-color").text($(this).attr("data-letter"));
-      $("#display").append(fridgeMagnet);
-})
-
-
-
-$("#clear").on("click",function(){
-  $("#display").empty();*/
