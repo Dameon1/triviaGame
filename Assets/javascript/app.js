@@ -5,13 +5,25 @@
 
   $(document).ready(function() {
 
-// check to see if working
+
+
+
+
+//  { check to see if working  ~see cl function or open console to see stack
     console.log("working");
 
-// start with a timer. this is a timed question game
-  setTimeout(function() {
-    console.log("still working");
-      },1000*3);
+//--- enables visual thru whole stack--- will appear after 3 seconds on bottom of console reports}
+    setTimeout(function() {
+      console.log("still working");
+        },1000*3);
+
+
+
+
+
+
+
+
 
 //function for a timer
 function timer() {
@@ -21,7 +33,7 @@ function timer() {
 
       function countdown() {
         if (timeLeft < 0) {
-          clearTimeout(timerId);
+          clearInterval(timerId);
             alert("Out of Time");
             return;
         } else {
@@ -34,45 +46,82 @@ function timer() {
 // clearTimeout();
 
 
-
-
-
-
-
-
-
-
-
 // create some variables to work with
   let $a = $("#first");
   let $b = $("#second");
   let $setTimeout = setTimeout(function(){},1000*5);
 
   let q1 = {
-    q1: "Who wrote?",
-    q1choices: ["a","b","c","d"],
+    question: "Who wrote?",
+    answers: ["a","b","c","d"],
 };
 let q2 = {
-  q2: "Who sang?",
-  q2choices: ["a","b","c","d"],
+  question: "Who sang?",
+  answers: ["a","b","c","d"],
 };
 let q3 = {
-  q3: "Who produced?",
-  q3choices: ["a","b","c","d"],
+  question: "Who produced?",
+  answers: ["a","b","c","d"],
 };
+
+let questionIndex = 0;
+let questions = [q1, q2, q3];
+
+let getQuestionText = (questionIndex) => {
+  return questions[questionIndex].question;
+  console.log(questions[questionIndex].question);
+}
+
+let getQuestionAnswers = (questionIndex) => {
+
+    for ( let i = 0; i < 4; i++) {
+        let choice = $("<h3>");
+        choice.text("Hello");
+        choice.addClass('click');
+        choice.attr("value",i);
+        $("#choices").append(choice);
+    }
+  return questions[questionIndex];
+  console.log(questions[questionIndex].answers[questionIndex]);
+}
+
   let correct = 0;
   let wrong   = 0;
-
+/*
  //add question objects to draw from
  results = () => {
    //question value === user picked value
- }
+ };
+getQuestionText();
+getQuestionAswers();
+// create classes*/
 
-// create classes
 
 
-  maker = (x,y) => {
-    for ( let i = 0; i < y.length; i++) {
+
+
+/* logging
+     1.document
+     2.main object
+     3.first oject in main object
+     4.first key of first object
+
+
+ cl = () => {
+    console.log(this);
+    console.log(questions);
+    console.log(questions[0]);
+    console.log(q1.question);
+};
+
+// calling initial stack logs --- enable/disable for bugging
+cl();
+
+*/
+
+
+  /*let maker = (arg,y) => {
+    for ( let i = 0; i < 5; i++) {
       let choice = $("<h3>");
       choice.text(y[i]);
       choice.addClass('click');
@@ -102,20 +151,20 @@ id="page"
 alert(example.constructor(q1.q1,q1.q1choices));
 */
 // Ask question q1.q1 with console.log of nextQuestion
-console.log(q1.q1);
+
 
 //created a couple of onclicks for working functinality
 $("#timer").on('click',function() {
 
   $("#choices").empty();
-  maker(q1.q1,q1.q1choices);
-  timer();
 
+  timer();
+  getQuestionAnswers();
 });
 
 $("#test").on('click', function() {
   $("#choices").empty();
-  maker(q2.q2,q2.q2choices);
+
 });
 
 
