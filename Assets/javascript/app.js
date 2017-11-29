@@ -57,11 +57,11 @@ function timer() {
 };
 let q2 = {
   question: "Who sang?",
-  answers: ["a","b","c","d"],
+  answers: ["e","f","g","h"],
 };
 let q3 = {
   question: "Who produced?",
-  answers: ["a","b","c","d"],
+  answers: ["i","j","k","l"],
 };
 
 let questionIndex = 0;
@@ -72,17 +72,16 @@ let getQuestionText = (questionIndex) => {
   console.log(questions[questionIndex].question);
 }
 
-let getQuestionAnswers = (questionIndex) => {
+let getQuestionAnswers = () => {
 
     for ( let i = 0; i < 4; i++) {
-        let choice = $("<h3>");
-        choice.text("Hello");
+        let choice = $("<h3 onClick=cl()>");
+        choice.text(q1.answers[i]);
+
         choice.addClass('click');
         choice.attr("value",i);
         $("#choices").append(choice);
-    }
-  return questions[questionIndex];
-  console.log(questions[questionIndex].answers[questionIndex]);
+    };
 }
 
   let correct = 0;
@@ -100,24 +99,31 @@ getQuestionAswers();
 
 
 
-/* logging
-     1.document
-     2.main object
-     3.first oject in main object
-     4.first key of first object
+/*
+    logging
+    1.document
+    2.main object
+    3.first oject in main object
+    4.first key of first object
+*/
 
+  cl = () => {
 
- cl = () => {
     console.log(this);
+
     console.log(questions);
-    console.log(questions[0]);
+
+    console.log(questions[questionIndex]);
+
     console.log(q1.question);
+
+    console.log(q1.answers);
 };
 
 // calling initial stack logs --- enable/disable for bugging
 cl();
 
-*/
+/**/
 
 
   /*let maker = (arg,y) => {
