@@ -101,23 +101,19 @@ let userPick;
             //Adding a click for response functionality and logging where index is for scoring purposes
           userPick = $(this).attr("value");
 
-          console.log(userPick);
+          //console.log(userPick);
               //console.log(parseInt(userPick));
           let    parsed = (parseInt(userPick));
-
-          console.log(parsed);
-          console.log(answerKey[questionIndex]);
-
-          if (parsed === answerKey[questionIndex]) {
+            if (parsed === answerKey[questionIndex]) {
                 correct++;
-                console.log(correct);
-                console.log(wrong);
+                results();
+                checkIndex();
               } else {
                 wrong++;
-                console.log(correct);
-                console.log(wrong);
-                currentScore();
+                results();
+                checkIndex();
               };
+
     });
 
     $("#question").text("Who wrote the song:___"+questions[questionIndex].question+"?");
@@ -129,10 +125,12 @@ let userPick;
 
   //This is to determine if endGame
     checkIndex = () => {
-    if (questionIndex ===  10) {
+    if (questionIndex === 10 ) {
         questionIndex -= 10;
-        alert("hi");
-        //reset();
+      let playAgain = confirm("You got: "+correct+ "out of 10.")//reset();
+        if (!playAgain) {
+          return;
+        }//reset();
   }
 
 }
@@ -141,34 +139,34 @@ let userPick;
   let reset = () => {
     let correct = 0;
     let wrong = 0;
-    //questionIndex -= 4;
     getQuestionAnswers();
 
     //timer();
   }
 
 
-  currentScore = () => {
-    console.log(correct);
-    console.log(wrong);
-  }
-
 
 
 
           //results(userPick);
-          results = (userPick) => {
-
+          results = () => {
+              console.log("Right Answer:" + questions[questionIndex].answers[answerkey.questionIndex]);
             //userPick = $(this).attr("value");
             //console.log("Your Pick: " + userPick);
-            userPick = parseInt(userPick);
+
             console.log("Your Pick: " + userPick);
 
 
 
-         }
+}
 
-
+         /*
+             logging
+             1.document
+             2.main object
+             3.first oject in main object
+             4.first key of first object
+         */
 
 
          cl = () => {
@@ -188,46 +186,35 @@ let userPick;
            console.log(correct);
        // logs current wrong score
            console.log(wrong);
-       }
+}
 
 
        //function for a timer
        function timer() {
 
-             let timeLeft = 3;
+             let timeLeft = 10;
              let timerId = setInterval(countdown, 1000);
 
              function countdown() {
 
-               if (timeLeft < 0) {
-                 clearInterval(timerId);
-                   alert("Out of Time");
-                     wrong++;
-                     console.log("~~~~~~~~~~");
-                     console.log(wrong);
-                     checkIndex();
-                     getQuestionAnswers();
-                     timer();
-
+              if (timeLeft < 0) {
+                clearInterval(timerId);
+                  alert("Out of Time");
+                    wrong++;
+                    checkIndex();
+                    getQuestionAnswers();
+                    timer();
                } else {
                  $("#timer").text(timeLeft);
                  timeLeft--;
                }
-               //checkIndex();
              }
-           }
+}
 
-           //created a couple of onclicks for working functinality
+           //This starts the game
            $("#timer").on('click',function() {
              getQuestionAnswers();
              timer();
-           });
-
-           $("#test").on('click', function() {
-             //getQuestionAnswers();
-             //resetGame();
-             //resetGame();
-             console.log("working");
            });
 
            $("#choices").on('click', function() {
@@ -238,108 +225,6 @@ let userPick;
                // if yes reset else return
             getQuestionAnswers();
            });
-
-
-            //console.log("Your Pick: " + userPick);
-            //console.log("This value parsed? " + parseInt(userPick));
-
-
-                //  let test =  valueOf(userPick)
-                //  console.log("This value has test value of " + test);
-                //  console.log("This value has value of " + valueOf(userPick));
-
-                //console.log(answerKey[1]);
-                //console.log("Your parsed Pick: " + parsed);
-
-
-
-        /*    userPick = $(this).attr("value");
-              if (userPick === answerKey[questionIndex]) {
-                console.log('winning');
-              }
-              else {
-                console.log("losing");
-              }*/
-
-
-
-
-
-
-
-      //*var playAgain = confirm("Play again?");
-      //if (playAgain) {
-        //return;
-      //} else {
-///
-/*this needs to be fixed
-      }
-}
-}
-*/
-
-/*let reset = () => {
-  let correct = 0;
-  let wrong = 0;
-  questionIndex -= 3;
-  //timer();
-}
-/*
-something=;
- results = () => {
-   //on clicks value compared to answerKey
-
-   something = this.value;
-   something = parseInt(something);
-
-
-   if (something === answerKey[questionIndex]) {
-   console.log("You Win!!")
- } esle {
- console.log("you lose")
-}
-*/
-
-
-
- /*results = (userPick) => {
-
-   //userPick = $(this).attr("value");
-   //console.log("Your Pick: " + userPick);
-   userPick = parseInt(userPick);
-   console.log("Your Pick: " + userPick);
-
-
-   //on clicks value compared to answerKey
-   //console.log("hi")
-  // if (userPick === answerKey[questionIndex]) {
-  // console.log("You Win!!")
- //} else {
-// console.log("you lose")
-}
-
-
-
-
-
-
-
-
-
-
-
-/*
-    logging
-    1.document
-    2.main object
-    3.first oject in main object
-    4.first key of first object
-*/
-
-
-
-// calling initial stack logs --- enable/disable for bugging
-//cl();
 
 
 
