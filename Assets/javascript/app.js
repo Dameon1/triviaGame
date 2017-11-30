@@ -111,7 +111,7 @@ currentScore = () => {
   console.log(wrong);
 }
 
-
+//
  results = (arr) => {
 
 
