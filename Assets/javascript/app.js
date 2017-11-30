@@ -39,7 +39,7 @@
 let questionIndex = 0;
 let questions = [q1, q2, q3];
 let answerKey = [1,2,3];
-
+let userPick;
 
 
 
@@ -59,6 +59,12 @@ let answerKey = [1,2,3];
       };
         $(".click").on('click',function() {
             //Adding a click for response functionality and logging where index is for scoring purposes
+            userPick = $(this).attr("value");
+                    console.log("Your Pick: " + userPick);
+            userPick = parseInt(userPick);
+
+              console.log(userPick);
+              results(userPick);
         });
     $("#question").text(questions[questionIndex].question+"");
     questionIndex++;
@@ -86,16 +92,49 @@ let answerKey = [1,2,3];
   timer();
 }
 /*
-
+something=;
  results = () => {
    //on clicks value compared to answerKey
 
-   (parseInt value(onClick) === answerKey[questionIndex])
+   something = this.value;
+   something = parseInt(something);
+
+
+   if (something === answerKey[questionIndex]) {
+   console.log("You Win!!")
+ } esle {
+ console.log("you lose")
+}
 */
 currentScore = () => {
   console.log(correct);
   console.log(wrong);
 }
+
+
+ results = (arr) => {
+
+
+
+
+   //on clicks value compared to answerKey
+console.log(answerKey.questionIndex);
+   console.log("hi")
+   if (userPick === answerKey[questionIndex]) {
+   console.log("You Win!!")
+ } else {
+ console.log("you lose")
+}
+}
+
+
+
+
+
+
+
+
+
 
 /*
     logging
@@ -153,7 +192,7 @@ function timer() {
 //created a couple of onclicks for working functinality
 $("#timer").on('click',function() {
   getQuestionAnswers();
-  //timer();
+
 });
 
 $("#test").on('click', function() {
@@ -164,6 +203,19 @@ $("#test").on('click', function() {
 });
 
 $("#choices").on('click', function() {
+
+/*
+userPick = this.value;
+userPick = parseInt(userPick);
+
+
+results();
+*/
+
+
+
+
+
     //display resultsDisplay
     // reset game option
     // if yes reset else return
