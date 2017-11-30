@@ -15,39 +15,40 @@
         },1000*3);
 
 
-
+//--- A place to keep score
 
         let correct = 0;
-        let wrong = 0;
+        let wrong   = 0;
 
-
-
-// clearTimeout();
-
-
-// create some variables to work with
-  let $a = $("#first");
-  let $b = $("#second");
-  let $setTimeout = setTimeout(function(){},1000*5);
-
+//--- question objects for oop games
   let q1 = {
     question: "Who wrote?",
     answers: ["a","b","c","d"],
 };
-let q2 = {
+
+  let q2 = {
   question: "Who sang?",
   answers: ["e","f","g","h"],
 };
-let q3 = {
+
+  let q3 = {
   question: "Who produced?",
   answers: ["i","j","k","l"],
 };
 
 let questionIndex = 0;
 let questions = [q1, q2, q3];
+let answerKey = [1,2,3];
 
-let getQuestionAnswers = () => {
 
+
+
+
+
+//---Main Question function
+
+  getQuestionAnswers = () => {
+   //timer();
   $("#choices").empty();
     for ( let i = 0; i < 4; i++) {
         let choice = $("<h3>");
@@ -60,55 +61,41 @@ let getQuestionAnswers = () => {
             //Adding a click for response functionality and logging where index is for scoring purposes
         });
     $("#question").text(questions[questionIndex].question+"");
-    $("#question").attr('value',Math.floor(Math.random()*4));
-    console.log(questionIndex);
     questionIndex++;
 }
 
-
-let checkIndex = () => {
+//This is to determine if endGame
+  checkIndex = () => {
   if (questionIndex ===  3) {
-      resetGame();
+      questionIndex -= 3;
+      console.log("hi");
+      var playAgain = confirm("Play again?");
+      if (playAgain) {
+        return;
+      } else {
+///this needs to be fixed
+      }
 }
 }
 
 
- let resetGame = () => {
+ /*let resetGame = () => {
   let correct = 0;
   let wrong = 0;
   questionIndex -= 3;
   timer();
 }
-
-
-
-
 /*
- //add question objects to draw from
+
  results = () => {
-   //question value === user picked value
- };
-getQuestionText();
-getQuestionAswers();
-// create classes*/
-/*
-let checkIndex = () => {
-  if (questionIndex >= 3) {
-    let answer = confirm("Play again?");
-      if (answer === true) {
-        resetGame();
+   //on clicks value compared to answerKey
 
-      }
-    return;
-      //reset Game
-    }
-}
+   (parseInt value(onClick) === answerKey[questionIndex])
 */
 currentScore = () => {
   console.log(correct);
   console.log(wrong);
 }
-
 
 /*
     logging
@@ -143,6 +130,7 @@ cl();
 
 //function for a timer
 function timer() {
+
       let timeLeft = 3;
       let timerId = setInterval(countdown, 1000);
 
@@ -152,66 +140,26 @@ function timer() {
           clearInterval(timerId);
             alert("Out of Time");
               wrong++;
-
               checkIndex();
               getQuestionAnswers();
-              timer();
-//function countdown() {
+
 
         } else {
           $("#timer").text(timeLeft);
           timeLeft--;
         }
       }
-}
-
-
-/**/
-
-
-  /*let maker = (arg,y) => {
-    for ( let i = 0; i < 5; i++) {
-      let choice = $("<h3>");
-      choice.text(y[i]);
-      choice.addClass('click');
-      choice.attr("value",i);
-
-
-      $("#choices").append(choice);
     }
-      $(".click").on('click',function() {
-        //Adding a click for response functionality
-
-        console.log("You clicked an answer");
-
-    });
-    $("#question").text(x+"");
-    $("#question").attr('value',Math.floor(Math.random()*4));
-    //timer function
-}
-
- /*constructor(q1.q1,q1.q1choices);
-id="page"
-
- */
-
-
-/*
-alert(example.constructor(q1.q1,q1.q1choices));
-*/
-// Ask question q1.q1 with console.log of nextQuestion
-
-
 //created a couple of onclicks for working functinality
 $("#timer").on('click',function() {
   getQuestionAnswers();
-  timer();
+  //timer();
 });
 
 $("#test").on('click', function() {
   //getQuestionAnswers();
   //resetGame();
-  resetGame();
+  //resetGame();
   console.log("working");
 });
 
