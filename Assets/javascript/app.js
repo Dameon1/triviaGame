@@ -140,8 +140,7 @@ let userPick;
     let correct = 0;
     let wrong = 0;
     getQuestionAnswers();
-
-    //timer();
+    timer();
   }
 
 
@@ -155,7 +154,8 @@ let userPick;
             //console.log("Your Pick: " + userPick);
 
             console.log("Your Pick: " + userPick);
-
+            getQuestionAnswers();
+            timer();
 
 
 }
@@ -217,7 +217,7 @@ let userPick;
              timer();
            });
 
-        
+
 
 
 //Create a for-loop to iterate through the q1.q1choices array
