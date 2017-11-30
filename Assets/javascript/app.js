@@ -60,14 +60,62 @@ let userPick;
         $(".click").on('click',function() {
             //Adding a click for response functionality and logging where index is for scoring purposes
             userPick = $(this).attr("value");
-                    console.log("Your Pick: " + userPick);
-            userPick = parseInt(userPick);
 
               console.log(userPick);
-              results(userPick);
+              //console.log(parseInt(userPick));
+              let    parsed = (parseInt(userPick));
+
+
+
+              console.log(parsed);
+              console.log(answerKey[questionIndex])
+              if (parsed === answerKey[questionIndex]) {
+                console.log("WINNING");
+              }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              questionIndex++;
+            //results(userPick);
+            
+            //console.log("Your Pick: " + userPick);
+            //console.log("This value parsed? " + parseInt(userPick));
+
+
+                //  let test =  valueOf(userPick)
+                //  console.log("This value has test value of " + test);
+                //  console.log("This value has value of " + valueOf(userPick));
+
+                //console.log(answerKey[1]);
+                //console.log("Your parsed Pick: " + parsed);
+
+
+
+        /*    userPick = $(this).attr("value");
+              if (userPick === answerKey[questionIndex]) {
+                console.log('winning');
+              }
+              else {
+                console.log("losing");
+              }*/
+
+
+
         });
     $("#question").text(questions[questionIndex].question+"");
-    questionIndex++;
 }
 
 //This is to determine if endGame
@@ -112,20 +160,22 @@ currentScore = () => {
 }
 
 
- results = (arr) => {
+ results = (userPick) => {
 
-
+   //userPick = $(this).attr("value");
+   //console.log("Your Pick: " + userPick);
+   userPick = parseInt(userPick);
+   console.log("Your Pick: " + userPick);
 
 
    //on clicks value compared to answerKey
-console.log(answerKey.questionIndex);
-   console.log("hi")
-   if (userPick === answerKey[questionIndex]) {
-   console.log("You Win!!")
- } else {
- console.log("you lose")
+   //console.log("hi")
+  // if (userPick === answerKey[questionIndex]) {
+  // console.log("You Win!!")
+ //} else {
+// console.log("you lose")
 }
-}
+
 
 
 
@@ -219,7 +269,7 @@ results();
     //display resultsDisplay
     // reset game option
     // if yes reset else return
-  getQuestionAnswers();
+ getQuestionAnswers();
 });
 //Create a for-loop to iterate through the q1.q1choices array
 //onClick functionality
