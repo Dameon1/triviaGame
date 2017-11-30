@@ -106,12 +106,14 @@ let userPick;
           let    parsed = (parseInt(userPick));
             if (parsed === answerKey[questionIndex]) {
                 correct++;
-                results();
                 checkIndex();
+                getQuestionAnswers();
+                timer();
               } else {
                 wrong++;
-                results();
                 checkIndex();
+                getQuestionAnswers();
+                timer();
               };
 
     });
