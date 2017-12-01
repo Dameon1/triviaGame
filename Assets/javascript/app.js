@@ -108,12 +108,12 @@ let userPick;
                 correct++;
                 checkIndex();
                 getQuestionAnswers();
-                timer();
+
               } else {
                 wrong++;
                 checkIndex();
                 getQuestionAnswers();
-                timer();
+
               };
 
     });
@@ -226,6 +226,7 @@ let userPick;
                // reset game option
                // if yes reset else return
             getQuestionAnswers();
+            timer();
            });
 
 
