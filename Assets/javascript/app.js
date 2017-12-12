@@ -118,12 +118,6 @@ getQuestionAnswers();
 console.log(correct);
 console.log(wrong);
     });
-
-
-
-
-
-
   //This is to determine if endGame
     checkIndex = () => {
     if (questionIndex === 10 ) {
@@ -141,15 +135,6 @@ console.log(wrong);
   }
 
 }
-
-         /*
-             logging
-             1.document
-             2.main object
-             3.first oject in main object
-             4.first key of first object
-         */
-
 
          cl = () => {
        // logs the document
@@ -173,10 +158,7 @@ console.log(wrong);
       let timeLeft = 10;
        //function for a timer
        function timer() {
-
-             let timerId = setInterval(countdown, 1000);
-
-
+       let timerId = setInterval(countdown, 1000);
              }
 
 /*function countdown() {
@@ -203,11 +185,5 @@ console.log(wrong);
 
 
 
-//Create a for-loop to iterate through the q1.q1choices array
-//onClick functionality
-//determine resultsDisplay
-//reset timer and ask nextQuestion
-// make functions to use, nextQuestion,timerReset,resultsDisplay
-// attach to html
 // display results
 });
