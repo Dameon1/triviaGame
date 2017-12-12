@@ -161,11 +161,18 @@ console.log(wrong);
        let timerId = setInterval(countdown, 1000);
              }
 
+<<<<<<< HEAD
 function countdown() {
 
  if (timeLeft < 0) {
   timeLeft = 10;
     clearInterval(timerId);
+=======
+/*function countdown() {
+
+ if (timeLeft < 0) {
+   clearInterval(timerId);
+>>>>>>> master
      alert("Out of Time");
        wrong++;
        checkIndex();
@@ -174,12 +181,20 @@ function countdown() {
   } else {
     $("#timer").text(timeLeft);
     timeLeft--;
+<<<<<<< HEAD
   }
 }
            //This starts the game
            $("#timer").on('click',function() {
              getQuestionAnswers();
              timer();
+=======
+  }*/
+           //This starts the game
+           $("#timer").on('click',function() {
+             getQuestionAnswers();
+             //timer();
+>>>>>>> master
            });
             //  $("#choices").on('click', function () {
             //    getQuestionAnswers();
