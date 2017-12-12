@@ -73,10 +73,6 @@ let q10 = {
 let questionIndex = 0;
 let questions = [q1,q2,q3,q4,q5,q6,q7,q8,q9,q10];
 let answerKey = [2,2,0,0,1,3,2,1,3,0];
-let userPick;
-
-
-
 
 
 //---Main Question function
@@ -97,79 +93,48 @@ let userPick;
 
       };
 
-      $(".click").on('click',function() {
+          $("#question").text("Who wrote the song:___"+questions[questionIndex].question+"?");
+
+}
+
+      $(document.body).on("click", ".click", function() {
             //Adding a click for response functionality and logging where index is for scoring purposes
-          userPick = $(this).attr("value");
+      let userPick = $(this).attr("value");
+          console.log(userPick);
+       let    parsed = (parseInt(userPick));
+       console.log(parsed);
 
-          //console.log(userPick);
-              //console.log(parseInt(userPick));
-          let    parsed = (parseInt(userPick));
-            if (parsed === answerKey[questionIndex]) {
-                correct++;
-                checkIndex();
-                getQuestionAnswers();
-
+          if (parsed === answerKey[questionIndex]) {
+           correct++;
               } else {
                 wrong++;
-                checkIndex();
-                getQuestionAnswers();
-
               };
 
+
+console.log("Right Answer:" + questions[questionIndex].answers[answerKey[questionIndex]]);
+questionIndex++;
+checkIndex();
+getQuestionAnswers();
+console.log(correct);
+console.log(wrong);
     });
-
-    $("#question").text("Who wrote the song:___"+questions[questionIndex].question+"?");
-
-    questionIndex++;
-};
-
-
-
   //This is to determine if endGame
     checkIndex = () => {
     if (questionIndex === 10 ) {
-        questionIndex -= 10;
-      let playAgain = confirm("You got: "+correct+ "out of 10.")//reset();
+
+      let playAgain = confirm("You got: "+correct+ "out of 10.")
+
+      questionIndex -= 10;
+      correct = 0;
+      wrong = 0;
+
+
         if (!playAgain) {
           return;
         }//reset();
   }
 
 }
-
-
-  let reset = () => {
-    let correct = 0;
-    let wrong = 0;
-    getQuestionAnswers();
-
-    //timer();
-  }
-
-
-
-
-
-          //results(userPick);
-          results = () => {
-              console.log("Right Answer:" + questions[questionIndex].answers[answerkey.questionIndex]);
-            //userPick = $(this).attr("value");
-            //console.log("Your Pick: " + userPick);
-
-            console.log("Your Pick: " + userPick);
-
-
-
-}
-
-         /*
-             logging
-             1.document
-             2.main object
-             3.first oject in main object
-             4.first key of first object
-         */
-
 
          cl = () => {
        // logs the document
@@ -190,52 +155,35 @@ let userPick;
            console.log(wrong);
 }
 
-
+      let timeLeft = 10;
        //function for a timer
        function timer() {
-
-             let timeLeft = 10;
-             let timerId = setInterval(countdown, 1000);
-
-             function countdown() {
-
-              if (timeLeft < 0) {
-                clearInterval(timerId);
-                  alert("Out of Time");
-                    wrong++;
-                    checkIndex();
-                    getQuestionAnswers();
-                    timer();
-               } else {
-                 $("#timer").text(timeLeft);
-                 timeLeft--;
-               }
+       let timerId = setInterval(countdown, 1000);
              }
-}
 
+/*function countdown() {
+
+ if (timeLeft < 0) {
+   clearInterval(timerId);
+     alert("Out of Time");
+       wrong++;
+       checkIndex();
+       getQuestionAnswers();
+       timer();
+  } else {
+    $("#timer").text(timeLeft);
+    timeLeft--;
+  }*/
            //This starts the game
            $("#timer").on('click',function() {
              getQuestionAnswers();
-             timer();
+             //timer();
            });
-
-           $("#choices").on('click', function() {
-
-           //timer();
-               //display resultsDisplay
-               // reset game option
-               // if yes reset else return
-            getQuestionAnswers();
-            timer();
-           });
+            //  $("#choices").on('click', function () {
+            //    getQuestionAnswers();
+              //});
 
 
 
-//Create a for-loop to iterate through the q1.q1choices array
-//onClick functionality
-//determine resultsDisplay
-//reset timer and ask nextQuestion
-// make functions to use, nextQuestion,timerReset,resultsDisplay
-// attach to html
 // display results
 });
