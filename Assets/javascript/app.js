@@ -154,47 +154,31 @@ console.log(wrong);
        // logs current wrong score
            console.log(wrong);
 }
-
-      let timeLeft = 10;
+  let timerId;
+  let timeLeft;
+function timeStart () {
+     timeLeft = 10;
        //function for a timer
-       function timer() {
-       let timerId = setInterval(countdown, 1000);
-             }
 
-<<<<<<< HEAD
+     timerId = setInterval(countdown, 1000);
+}
+
+
 function countdown() {
 
  if (timeLeft < 0) {
   timeLeft = 10;
-    clearInterval(timerId);
-=======
-/*function countdown() {
-
- if (timeLeft < 0) {
-   clearInterval(timerId);
->>>>>>> master
-     alert("Out of Time");
-       wrong++;
-       checkIndex();
-       getQuestionAnswers();
-       timer();
-  } else {
-    $("#timer").text(timeLeft);
-    timeLeft--;
-<<<<<<< HEAD
-  }
+  clearInterval(timerId);
+} else {
+  timeLeft--;
+  $("#timer").text(timeLeft);
+}
 }
            //This starts the game
            $("#timer").on('click',function() {
-             getQuestionAnswers();
-             timer();
-=======
-  }*/
-           //This starts the game
-           $("#timer").on('click',function() {
-             getQuestionAnswers();
-             //timer();
->>>>>>> master
+            getQuestionAnswers();
+          timeStart();
+
            });
             //  $("#choices").on('click', function () {
             //    getQuestionAnswers();
