@@ -2,7 +2,7 @@
 
 /* document ready... allows the page to load completely before linking anything to the html
               ....very important*/
-
+// This file makes use of jQuery syntax.
   $(document).ready(function() {
 
   let correct = 0;
@@ -129,9 +129,4 @@
       gameStart = true;
       }
   });
-
-
-
-
-
 });
