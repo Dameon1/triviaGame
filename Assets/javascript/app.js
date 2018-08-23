@@ -5,12 +5,16 @@
 // This file makes use of jQuery syntax.
 $(document).ready(function() {
 
-  let correct = 0;
+  //let correct = 0;
   let gameStart = false;
   let timerId;
   let timeLeft;
   let questionIndex = 0;
-
+  function * scoreKeeper(){
+    let correct = 0;
+    while(true)
+      yield correct;
+  }
   const q1 = {
     question: 'Party in the U.S.A',
     answers: ['Katy Perry','Miley Cyrus','Jessie Jay','Beyonce'],
@@ -92,9 +96,10 @@ $(document).ready(function() {
 
   const checkIndex = () => {
     if (questionIndex === 10 ) {
-      let playAgain = confirm('You got: '+correct+ 'out of 10.');
+      let correctAmount = scoreKeeper;
+      let playAgain = confirm('You got: '+correctAmount+ 'out of 10.');
       questionIndex -= 10;
-      correct = 0;
+      //correct = 0;
       if (playAgain !== true) {
         return;
       }
