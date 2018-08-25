@@ -1,6 +1,9 @@
 
-Musical quiz application
+# Musical quiz application
 
 Tests user knowledge of writers of songs
 
-Works , but still working on it.
+10 quesstions to answer
+
+10 seconds to answer each question
+ 
